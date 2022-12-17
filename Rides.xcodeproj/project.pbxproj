@@ -21,6 +21,7 @@
 		9949D6822948E4BC00907F64 /* RidesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9949D6812948E4BC00907F64 /* RidesUITests.swift */; };
 		9949D6842948E4BC00907F64 /* RidesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9949D6832948E4BC00907F64 /* RidesUITestsLaunchTests.swift */; };
 		99A33B23294A1BE100BC8C2A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A33B22294A1BE100BC8C2A /* Color.swift */; };
+		99B16924294E2E55004949C2 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B16923294E2E55004949C2 /* Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		9949D6812948E4BC00907F64 /* RidesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesUITests.swift; sourceTree = "<group>"; };
 		9949D6832948E4BC00907F64 /* RidesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		99A33B22294A1BE100BC8C2A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		99B16923294E2E55004949C2 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		9949D65F2948E4B800907F64 /* Rides */ = {
 			isa = PBXGroup;
 			children = (
+				99B16922294E2E38004949C2 /* Validation */,
 				99A33B21294A1BD000BC8C2A /* Extensions */,
 				990E0B99294995040079235B /* Vehicle List */,
 				990E0B94294994410079235B /* View Model */,
@@ -164,6 +167,14 @@
 				99A33B22294A1BE100BC8C2A /* Color.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		99B16922294E2E38004949C2 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				99B16923294E2E55004949C2 /* Validation.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +312,7 @@
 				990E0B962949945D0079235B /* VehicleViewModel.swift in Sources */,
 				990E0B91294994210079235B /* VehicleListViewController.swift in Sources */,
 				9949D6612948E4B800907F64 /* AppDelegate.swift in Sources */,
+				99B16924294E2E55004949C2 /* Validation.swift in Sources */,
 				990E0B93294994370079235B /* VehicleDetailsViewController.swift in Sources */,
 				99A33B23294A1BE100BC8C2A /* Color.swift in Sources */,
 				9949D6632948E4B800907F64 /* SceneDelegate.swift in Sources */,

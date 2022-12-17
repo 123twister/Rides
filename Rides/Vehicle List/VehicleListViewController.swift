@@ -98,7 +98,15 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
         filterTf.text = ""
         tableView.isHidden = false
         
-        getData()
+        if searchText.isNumberValid {
+            getData()
+        } else {
+            tableView.isHidden = true
+            displayAlertMessage(userMessage: "Please enter a valid number that ranges between 1 to 100.")
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+        }
+        
         mobileNetwork()
         
         tableView.reloadData()
@@ -106,7 +114,7 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
     
     @IBAction func filterBtn(_ sender: UIButton) {
         
-        if vehicleData.count > 0 {
+        if searchText.isNumberValid {
             animateIn(desiredView: blurView)
             animateIn(desiredView: dialogView)
         } else {
