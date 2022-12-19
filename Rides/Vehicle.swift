@@ -22,7 +22,7 @@ struct VehicleData: Codable {
     let specs: [String]?
     let doors: Int?
     let mileage: Int?
-    let kilometrage: Int?
+    let kilometrage: Double?
     let license_plate: String?
     let error: String?
 }

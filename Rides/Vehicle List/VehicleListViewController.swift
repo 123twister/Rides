@@ -21,6 +21,7 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - properties
+    
     var vehicleData: [VehicleData] = []
     var searchText = ""
     var carType = UIPickerView()
@@ -48,9 +49,11 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
         tableView.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = true
         
         carType.delegate = self
         carType.dataSource = self
@@ -98,14 +101,7 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
         filterTf.text = ""
         tableView.isHidden = false
         
-        if searchText.isNumberValid {
-            getData()
-        } else {
-            tableView.isHidden = true
-            displayAlertMessage(userMessage: "Please enter a valid number that ranges between 1 to 100.")
-            activityIndicator.isHidden = true
-            activityIndicator.stopAnimating()
-        }
+        checkInput(Int(searchText))
         
         mobileNetwork()
         
@@ -130,7 +126,6 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
         tableView.reloadData()
     }
     
-    
     // MARK: - functionalities
     
     @objc func donePicker()
@@ -150,7 +145,7 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! VehicleListTableViewCell
         
         let data = filterCarTypes[indexPath.row]
-        let viewModel = VehicleViewModel(vin: data.vin, make_and_model: data.make_and_model, color: data.color, car_type: data.car_type, error: data.error)
+        let viewModel = VehicleViewModel(vin: data.vin, make_and_model: data.make_and_model, color: data.color, car_type: data.car_type, error: data.error, kilometrage: data.kilometrage)
         
         cell.makeLbl.text = viewModel.make_and_model
         cell.vinLbl.text = viewModel.vin
@@ -159,14 +154,18 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VehicleDetailsViewController") as! VehicleDetailsViewController
+        
         let data = filterCarTypes[indexPath.row]
-        let viewModel = VehicleViewModel(vin: data.vin, make_and_model: data.make_and_model, color: data.color, car_type: data.car_type, error: data.error)
+        let viewModel = VehicleViewModel(vin: data.vin, make_and_model: data.make_and_model, color: data.color, car_type: data.car_type, error: data.error, kilometrage: data.kilometrage)
         
         vc.model = viewModel.make_and_model ?? ""
         vc.vin = viewModel.vin ?? ""
         vc.carType = viewModel.car_type ?? ""
         vc.color = viewModel.color ?? ""
+        vc.kiloMeterTravelled = viewModel.kilometrage ?? 0.0
+        
         
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -254,6 +253,22 @@ class VehicleListViewController: UIViewController, UITextFieldDelegate, UITableV
         
     }
     
+    //VALIDATION CHECK
+    func checkInput(_ input: Int?)
+    {
+        
+        if ((input ?? 0) < 1) || ((input ?? 0) > 100)
+        {
+            tableView.isHidden = true
+            displayAlertMessage(userMessage: "Please enter a valid number that ranges between 1 to 100.")
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+        } else {
+            
+            getData()
+        }
+    }
+    
     
 }
 
@@ -319,6 +334,9 @@ extension VehicleListViewController  {
     }
     
     
+    
+    
 }
+
 
 

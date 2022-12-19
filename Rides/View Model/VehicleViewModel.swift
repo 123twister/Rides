@@ -14,4 +14,5 @@ struct VehicleViewModel: Codable {
     let color: String?
     let car_type: String?
     let error: String?
+    let kilometrage: Double?
 }
